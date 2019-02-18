@@ -8,6 +8,8 @@ python:
 before_install:
   - "pip install 'lander>=0.1.14a1'"
 script:
+  - "echo $TRAVIS_PULL_REQUEST"
+  - "echo $TRAVIS_EVENT_TYPE"
   # Compile PDF using containerized lsst-texmf
   - "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make'"
   # Deploy website. See https://github.com/lsst-sqre/lander for CLI options
